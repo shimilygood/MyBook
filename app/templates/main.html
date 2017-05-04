@@ -1,0 +1,35 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="panel-title">
+			<h2><span atitle></span></h2>
+			<p>
+				下午好，欢迎“{{user.name}}”,回来.
+			</p>
+		</div>
+	</div>
+	<div class="panel-body">
+		<table class="table table-hover">
+			 	<thead>
+		        <tr>
+		          <th>ID</th>
+		          <th>title</th>
+		          <th>info</th>
+		          <th>author</th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		        <tr ng-repeat="list in bookData">
+		          <th scope="row">{{list.id}}</th>
+		          <td>{{list.title}}</td>
+		          <td>{{list.des}}</td>
+		          <td>@{{list.author}}</td>
+		        </tr>
+		      </tbody>
+		</table>
+		
+	</div>
+		
+	<h2><loader howToLoad="loadData1()">滑动加载数据111。。。</loader></h2>	
+</div>
+	 
+

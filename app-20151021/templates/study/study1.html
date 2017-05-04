@@ -1,0 +1,47 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+			<div class="panel-title">
+				<b>知识练习</b>
+			</div>
+	</div>
+	<div class="panel-body">
+		<cite><small>知识点1. >> </small>数据绑定：</cite>
+		
+		<p><span class="red">【2种数方式】</span></p>
+		<p><b class="gold">方式一：</b>ng-bind ->防止加载成功前出现乱码</p>
+		<p>姓名:<span ng-bind="name"></span></p>
+		<p><b class="gold">方式二：</b>{}</p>
+		<p>姓名:<span>{{name}}</span></p>
+		<hr />
+		
+		<cite><small>知识点2. >> </small>$apply方法：<span class="red">【脏检查】</span></cite>
+		<details>
+			$apply:让angular知道内容发生了变化<br />
+			不会脏检查所有对象
+		</details>
+		<p><span>{{date}}</span></p>
+		
+		<hr />
+		<cite><small>知识点3. >> </small>$watch方法：<span class="red">【脏检查】</span></cite>
+		<details>监听一个model，当一个model每次改变时，都会触发第二个函数</details>
+		<p><input type="text" ng-model="name" />改变次数：<span>{{count}}</span>... <span>{{name}}</span></p>
+
+		<hr />
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+
+</div>
+

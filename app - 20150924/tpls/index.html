@@ -1,0 +1,36 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="panel-title">
+			<h2 ng-bind="welcome.text"></h2>
+			<p>
+				下午好，欢迎“{{user.name}}”,回来
+			</p>
+		</div>
+	</div>
+	<div class="panel-body">
+		<table class="table table-hover">
+			 	<thead>
+		        <tr>
+		          <th>ID</th>
+		          <th>title</th>
+		          <th>desciption</th>
+		          <th>author</th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		        <tr ng-repeat="list in bookData">
+		          <th scope="row">{{list.id}}</th>
+		          <td>{{list.title}}</td>
+		          <td>{{list.des}}</td>
+		          <td>@{{list.author}}</td>
+		        </tr>
+		      </tbody>
+		</table>
+		<div class="col-md-2"><a href="#list">点击链接书屋列表</a></div>
+		<div class="col-md-10"><a href=""><p ctags></p></a></div>
+	</div>
+		
+		
+</div>
+	 
+

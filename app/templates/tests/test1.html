@@ -1,0 +1,47 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+			<div class="panel-title">
+				<p>测试中心</p>
+			</div>
+	</div>
+	<div class="panel-body">
+		
+		<p><b>独立scope:</b></p>
+		<div uname></div>
+		<div uname></div>
+		
+		<p> <b>scope绑定策略:</b> </p>
+		
+		directive:<drink flavor='{{ctrlFlavor}}'></drink>
+		
+		
+		<div>Ctrl:<input type="text" ng-model="ctrlFlowers"></div>
+		
+		directive:<drink2 flowers='{{ctrlFlowers}}'></drink2>
+		<hr />
+		<p><b>折叠 <font color="firebrick">[未完成]</font></b></p>
+		
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"  ng-repeat="data in Data" >
+			  <div class="panel panel-default">
+			    <div class="panel-heading" role="tab" id="headingOne">
+			      <h4 class="panel-title">
+			        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+			      	{{data.title}}
+			        </a>
+			      </h4>
+			    </div>
+			    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+			      <div class="panel-body">
+			       	{{data.content}}
+			      </div>
+			    </div>
+			  </div>
+			
+			</div>
+
+	
+		
+	</div>
+
+</div>
+

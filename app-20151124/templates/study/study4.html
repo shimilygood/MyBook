@@ -1,0 +1,142 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+			<div class="panel-title">
+				<b>知识练习</b>
+			</div>
+	</div>
+	<div class="panel-body">
+		
+		<cite><small>知识点1. >> </small>filter的两种使用方法：</cite>
+		<cite><small>一、</small>在模板中使用filter</cite>
+		
+		<details>　我们可以直接在{{}}中使用filter，跟在表达式后面用 | 分割，语法如下：</details>
+		<pre>{ { expression | filter } }</pre>
+		<details>也可以多个filter连用，上一个filter的输出将作为下一个filter的输入（怪不得这货长的跟管道一个样。。）</details>
+		<pre>{ { expression | filter1 | filter2 | ... } }</pre>
+		<details>filter可以接收参数，参数用 : 进行分割，如下：</details>
+		<pre>{ { expression | filter:argument1:argument2:... } }</pre>
+		<details>　除了对{{}}中的数据进行格式化，我们还可以在指令中使用filter，例如先对数组array进行过滤处理，然后再循环输出：</details>
+		<pre> ng-repeat=" a in array | filter " </pre>
+		
+		
+		
+		
+		<hr />
+		<cite><small>二、</small>在controller和service中使用filter</cite>
+
+
+		　<details>我们的js代码中也可以使用过滤器，方式就是我们熟悉的依赖注入，例如我要在controller中使用currency过滤器，只需将它注入到该controller中即可，代码如下：</details>
+
+<pre>app.controller('testC',function($scope,currencyFilter){
+    $scope.num = currencyFilter(123534);  
+}</pre>
+		
+		　　<details>在模板中使用{{num}}就可以直接输出$123,534.00了！在服务中使用filter也是同样的道理。
+		
+		　　此时你可能会有疑惑，如果我要在controller中使用多个filter，难道要一个一个注入吗，这岂不太费劲了？小兄弟莫着急~ng提供了一个$filter服务可以来调用所需的filter，你只需注入一个$filter就够了，使用方法如下：</details>
+		
+<pre>app.controller('testC',function($scope,$filter){
+    $scope.num = $filter('currency')(123534);
+　　$scope.date = $filter('date')(new Date());  
+}</pre>
+		
+		　<details>　可以达到同样的效果。好处是你可以方便使用不同的filter了。</details>
+
+<cite><small>三、</small>ng的内置过滤器</cite>
+
+<pre>
+{ {num | currency : '￥'} }
+{ {date | date : 'yyyy-MM-dd hh:mm:ss EEEE'} }
+
+ json(格式化json对象):  { { jsonTest | json} }
+ 等等。。。。。
+</pre>
+
+
+
+
+
+		<hr />
+			<details>常用过滤器的使用</details>
+			<h2>数据过滤: </h2>
+			<!-- number：数据格式过滤，可以使数据每三位用逗号分开显示  123,456,789,235,567,790 -->
+			{{123456789235567788 | number}}
+			<br><b>保留三位小数点:</b>
+			{{178.456789235567788 | number:3}}
+			<br>
+			<b>人民币：</b>{{989934.3443 |currency:'￥'}}  <br>
+			<b>美元：</b>{{989934.3443 |currency}}
+
+
+			<hr />
+			<h2>格式化字符串为小写: </h2>
+				{{"sdjfFSsjkdfjkDKJFV"}}
+
+			<hr />
+			<h2>时间、日期格式: </h2>
+			{{today |date:"y-M-d"}} <br>
+			{{today |date:"short"}} <br>
+			{{today |date:"shortDate"}} <br>
+			{{today |date:"shortTime"}} <br>
+			{{today |date:"longDate"}} <br>
+			{{today |date:"mediumDate"}} <br>
+			{{today |date:"mediumTime"}} <hr>
+			<b>年：</b>
+			{{today |date:"y"}} <br>
+			{{today |date:"yy"}} <br>
+			{{today |date:"yyyy"}} <br>
+			<b>月：</b>
+			{{today |date:"M"}} <br>
+			{{today |date:"MM"}} <br>
+			{{today |date:"MMM"}} <br>
+			{{today |date:"MMMM"}} <br>
+			<b>日：</b>
+			{{today |date:"d"}} <br>
+			{{today |date:"dd"}} <br>
+			{{today |date:"EEEE"}} <br>
+			{{today |date:"EEE"}} <br>
+			<hr />
+			<h2>小时：</h2>
+			24进制{{today |date:"HH"}} <br>
+			{{today |date:"H"}} <br>
+			12进制{{today |date:"hh"}} <br>
+			{{today |date:"h"}} <br>
+			<b>分：</b>
+			{{today |date:"mm"}} <br>
+			{{today |date:"m"}} <br>
+			
+			<b>秒：</b>
+			{{today |date:"ss"}} <br>
+			{{today |date:"s"}} <br>
+			{{today |date:".sss"}} <br>
+
+			{{today |date:"y-MM-d H:m:s"}} <br>
+			
+			<hr />
+			<h3>数组截取：</h3>
+			{{[12,3,0,4,5,6,6,2] |limitTo:3}} <br>
+			{{[12,3,0,4,5,6,6,2] |limitTo:-3}} <br>
+			<hr />
+			<h2>转成小写：</h2>
+			{{"ljkkjkHH" |lowercase}} <br />
+			{{"ljDSksdfsdfDkjkHH" |uppercase}}
+
+			<hr />
+			<b>金钱：</b>
+			{{99887 |currency}} <br />
+			{{199925 |currency:"￥"}}
+			
+			<hr />
+			<b>截取数据：</b>
+			{{[1,2,3,4,5,6] |limitTo:3}}<br>
+			{{[1,2,3,4,5,6] |limitTo:-3}}<br>
+			
+			<b>匹配数据：</b><br>
+			{{student |filter:"李"}}<br>
+
+		
+		
+	</div>
+
+</div>
+

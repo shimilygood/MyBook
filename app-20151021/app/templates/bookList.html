@@ -1,0 +1,36 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<div class="panel-title">
+			<h2 ng-bind="welcome.text"></h2>
+			<p booklist></p>
+		</div>
+	</div>
+	<div class="panel-body">
+		<table class="table table-hover">
+			 	<thead>
+		        <tr>
+		          <th>id</th>
+		          <th>clum</th>
+		          <th>title</th>
+		          <th>author</th>
+		        </tr>
+		      </thead>
+		      <tbody>
+		        <tr ng-repeat="book in bookData">
+		        	<td>{{book.id}}</td>
+		        	<td>{{book.clum}}</td>
+		          <!--<td><a ui-sref="index.books({cfId:book.id})">{{book.title}}</a></td>-->
+		          <td><a href="#index/books?id={{book.id}}">{{book.title}}</a></td>
+		          <td>@{{book.author}}</td>
+		        </tr>
+		      </tbody>
+		</table>
+		<div class="col-md-2"><a href="#index"> <<返回</a></div>
+		<div class="col-md-10"><a href=""><p ctags></p></a></div>
+	</div>
+</div>
+
+
+
+
+

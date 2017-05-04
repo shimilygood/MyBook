@@ -1,0 +1,21 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+			<div class="panel-title">
+				<b>Scope绑定策略</b>
+			</div>
+	</div>
+	<div class="panel-body">
+		<b>独立scope:</b>
+		<hello></hello>
+		<hello></hello>
+		<hello></hello>
+		<b>scope绑定策略:  @ 、 = 、 &:</b><br>
+		<p>control:</p>
+		<input type="text" ng-model="ctrlFlavor">
+		<p>directive:</p>
+		<drinks flavor="{{ctrlFlavor}}"></drinks>
+	
+	</div>
+
+</div>
+

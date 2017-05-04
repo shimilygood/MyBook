@@ -1,0 +1,11 @@
+{
+	'version':"1.0.0",
+	'private':true,
+	'name':"我的书屋",
+	'description':"官方强力推荐的书库",
+	'license':"MIT",
+	"scripts":{
+		"open":"plese in bower open",
+		"updata":"2015.11.16",
+	}
+}

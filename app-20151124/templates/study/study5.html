@@ -1,0 +1,54 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+			<div class="panel-title">
+				<b>知识练习</b>
+			</div>
+	</div>
+	<div class="panel-body">
+		
+		<div class="row0" ng-app="myApp"  ng-hide="!productData.length">
+			<nav class="navbar navbar-default">
+				<form class="navbar-form navbar-left" role="search">
+			        <div class="form-group">
+			          <lable>搜索：</lable><input type="" name="" id="" value="" ng-model="search.id" />
+			        </div>
+			      
+			     </form>
+		    </nav> 
+			<table class="table table-hover">
+			 	<tr>
+			 		<th ng-click="changOrder('id')" ng-class="{dropup:order===''}">ID
+			 			<span class="caret" ng-class="{orderColor:orderType==='id'}"></span>
+			 		</th>
+			 		<th ng-click="changOrder('name')" ng-class="{dropup:order===''}">商品名称
+			 			<span class="caret" ng-class="{orderColor:orderType==='name'}"></span>
+			 		</th>
+			 		<th ng-click="changOrder('price')" ng-class="{dropup:order===''}">单价
+			 			<span class="caret" ng-class="{orderColor:orderType==='price'}"></span>
+			 		</th>
+			 		<th ng-click="changOrder('num')" ng-class="{dropup:order===''}">数量
+			 			<span class="caret" ng-class="{orderColor:orderType==='num'}"></span>
+			 		</th>
+			 		<th>总价</th>
+			 		<th>操作</th></tr>
+			 	<tr ng-repeat="list in productData | filter:search | orderBy:order+orderType">
+			 		<td>{{list.id}}</td>
+			 		<td>{{list.name}}</td>
+			 		<td>{{list.price |currency:'￥'}}</td>
+			 		<td>{{list.num}}</td>
+			 		<td>{{list.price * list.num|currency:'￥'}}</td>
+			 		<td><button type="button" class="btn btn-danger" ng-click="remove(list.id)">删除</button></td>
+			 	</tr>
+			 	<tr>
+			 		<td>总价格：</td>
+			 		<td>{{totalPrice()|currency:'￥'}}</td>
+			 		<td>总数量：</td>
+			 		<td>{{totalNum()}}</td>
+			 		<td colspan="2"><button type="button" class="btn btn-danger" ng-click="productData={};">清空</button></td>
+			 	</tr>
+		    </table>
+	
+		</div>
+	<p ng-show="!productData.length">您的购物车已被清空！</p>
+</div>
+
